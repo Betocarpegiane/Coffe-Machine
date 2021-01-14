@@ -1,0 +1,148 @@
+class coffeMachine:
+
+    def __init__(self):
+        self.water = 400
+        self.milk = 540
+        self.coffeBeans = 120
+        self.cups = 9
+        self.money = 550
+
+    def print_Satuts(self):
+        print("The coffee machine has:")
+        print(str(self.water) + " of water")
+        print(str(self.milk) + " of milk")
+        print(str(self.coffeBeans) + " of coffee beans")
+        print(str(self.cups) + " of disposable cups")
+        print(str(self.money) + " of money")
+
+
+    def menu(self):
+        print()
+        option = input("Write action (buy, fill, take, remaining, exit):\n")
+        if option == "buy":
+            self.buy()
+        if option == "fill":
+            self.fill()
+        if option == "take":
+            self.take()
+        if option == "remaining":
+            self.remaining()
+        if option == "exit":
+            self.exit()
+        print()
+
+    def buy(self):
+        print()
+        buy_option = input("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:\n")
+        if buy_option == "1" and self.water >= 250 and self.coffeBeans >= 16 and self.cups >= 1:
+            print("I have enough resources, making you a coffee!")
+            print()
+
+            self.water = self.water - 250
+            self.milk = self.milk
+            self.coffeBeans = self.coffeBeans - 16
+            self.cups = self.cups - 1
+            self.money = self.money + 4
+            self.menu()
+
+        if buy_option == "1" and self.water < 250:
+            print("Sorry, not enough water!")
+            self.menu()
+
+        if buy_option == "1" and self.coffeBeans < 16:
+            print("Sorry, not enough coffeBeans!")
+            self.menu()
+
+        if buy_option == "1" and self.cups < 1:
+            print("Sorry, not enough disposable cups!")
+            self.menu()
+
+        if buy_option == "2" and self.water >= 350 and self.milk >= 75 and self.coffeBeans >= 20 and self.cups >= 1:
+            print("I have enough resources, making you a coffee!")
+            self.water = self.water - 350
+            self.milk = self.milk - 75
+            self.coffeBeans = self.coffeBeans - 20
+            self.cups = self.cups - 1
+            self.money = self.money + 7
+            self.menu()
+
+        if buy_option == "2" and self.water < 350:
+            print("Sorry, not enough water!")
+            self.menu()
+
+        if buy_option == "2" and self.milk < 75:
+            print("Sorry, not enough milk!")
+            self.menu()
+
+        if buy_option == "2" and self.coffeBeans < 20:
+            print("Sorry, not enough coffeBeans!")
+            self.menu()
+
+        if buy_option == "2" and self.cups < 1:
+            print("Sorry, not enough disposable cups!")
+            self.menu()
+
+
+        if buy_option == "3" and self.water >= 200 and self.milk >= 100 and self.coffeBeans >= 12 and self.cups >= 1:
+            print("I have enough resources, making you a coffee!")
+            print()
+            self.water = self.water - 200
+            self.milk = self.milk - 100
+            self.coffeBeans = self.coffeBeans - 12
+            self.cups = self.cups - 1
+            self.money = self.money + 6
+            self.menu()
+
+        if buy_option == "3" and self.water < 200:
+            print("Sorry, not enough water!")
+            self.menu()
+
+        if buy_option == "3" and self.milk < 100:
+            print("Sorry, not enough milk!")
+            self.menu()
+
+        if buy_option == "3" and self.coffeBeans < 12:
+            print("Sorry, not enough coffeBeans!")
+            self.menu()
+
+        if buy_option == "3" and self.cups < 1:
+            print("Sorry, not enough disposable cups!")
+            self.menu()
+
+        if buy_option == "back":
+            self.menu()
+
+    def fill(self):
+        print()
+        adWater = int(input("Write how many ml of water do you want to add:\n"))
+        self.water = self.water + adWater
+
+        adMilk = int(input("Write how many ml of milk do you want to add:\n"))
+        self.milk = self.milk + adMilk
+
+        adCoffee = int(input("Write how many grams of coffee beans do you want to add:\n"))
+        self.coffeBeans = self.coffeBeans + adCoffee
+
+        adCups = int(input("Write how many disposable cups of coffee do you want to add:\n"))
+        self.cups = self.cups + adCups
+        self.menu()
+
+    def take(self):
+        print()
+        print("I gave you $" + str(self.money))
+        self.money = self.money - self.money
+        self.menu()
+
+    def remaining(self):
+        print()
+        self.print_Satuts()
+        self.menu()
+
+
+    def exit(self):
+        exit()
+
+
+cm = coffeMachine()
+while True:
+    cm.menu()
